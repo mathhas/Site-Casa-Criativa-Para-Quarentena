@@ -1,0 +1,327 @@
+        /*
+
+
+        BOX -> conteúdo da caixa
+        -espaçamentos
+        -bordas
+        -preenchimentos
+        
+        -posicionamentos
+
+        "quanto mais fundo a cascata, mais forte" -> quanto mais especificações, maior a prioridade do estilo
+        nos agrupamentos de caracteristicas como margin, segue sempre sentido horario as específicações
+        */
+        
+        body{
+            background: #e5e5e5;
+            color: #25282b;
+            text-align: center;
+            margin: 0;
+
+            font-family: 'Montserrat', sans-serif; /*fonte do google fonts*/
+        }
+
+        body.hideScroll{
+            overflow: hidden;/*retira as rolagens*/
+        }
+
+        .button{
+            background: #ff5e84;
+            color: white;
+            width: 150px;/*largura botoes add e ver ideias*/
+            height: 40px;
+            border-radius: 8px;/*borda boleada nos botoes. é possibel usar mais parametros para dar formas aos botoes*/
+            box-shadow: 0px 8px 16px #ff5e8432;/*cor da borda do tipo rgba(a de alpha)*/
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button:hover{
+            background-color: #0984e3;
+            text-decoration: none;
+        }
+
+        a{/*referencia global a links*/
+            color: #ff5e84; /*cor da letra*/
+            font-weight: bold; /*negrito*/
+            text-decoration: none;
+        }
+
+        a:hover{
+            text-decoration: underline;
+        }
+
+        p, .description{
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0.1px;
+        }
+
+        #container{
+            width: 90%;/*ate 90% da página, para o conteudo nao encostar nas bordas caso diminua o tamanho da janela*/
+            max-width: 980px;/*largura máxima*/
+
+            margin: 40px auto;/*40pixels cima e baixo, e lados automáticos*/
+
+            display: flex; /*poe os filhos em linha*/
+        }
+
+        #intro{
+            width: 300px;
+            margin-right: 64px;
+        }
+
+        main{
+            margin: 32px 0;/*32px cima e baixo e 0 lados*/
+        }
+
+        section#buttons{/*faz os dois botoes da pagina inicial ficarem na mesma linha*/
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        button{
+            background: none;
+            color: #ff5e84;
+            border: none;/*tira a borda dos botões*/
+            font-weight: bold;/*negrito*/
+            cursor: pointer; /*ao passar por cima do botao aparece o dedinho de mouse*/
+            outline: none;/*nao aparecer contorno do botao ao passar o mouse pro cima*/
+            
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 18px;
+            letter-spacing: 0.2px;
+
+        }
+
+        button:hover{
+            text-decoration: underline;/*coloca underline nos botoes quando o cursor passar por eles*/
+        }
+
+        footer{
+            text-align: center;
+
+            font-size: 14px;
+            font-weight: regular;
+            line-height: 18px;
+            letter-spacing: 0.2px;
+
+            color: #777;
+            margin-top: 32px;
+        }
+        footer a{/*concentrar propriedade abaixo para o link do footer*/
+            opacity: 0.7;/*o quao opaco será...*/
+        }
+
+        .idea{
+            display: flex;/*poe os filhos em linha*/
+            background-color: #FFF;/*cor de fundo dos idea*/
+            box-shadow: 0 4px 16px -8px rgba(1, 1, 1, 0);/*sombra pra dentro (-8px) dos baloes idea*/
+            border-radius: 8px;/*contorno boleado do balao idea*/
+            margin-bottom: 32px;/*margem de um balao idea pro outro*/
+            padding: 32px;/*preenchimento dentro dos idea (cursos), o conteudo fica melhor preenchido dentro do background*/
+            text-align: left;
+        }
+
+        .idea img{
+            width: 60px;
+            height: 60px;
+            margin-right: 32px;
+        }
+
+        .idea h3{
+            margin: 0;
+        }
+
+        .idea p {
+            margin: 8px 0;
+            color: #777;
+        }
+
+        .idea .description{
+            margin: 16px 0;/*margem da descrição dos cursos com 16 px de espaçamento cima baixo e 0 laterais*/
+        }
+
+                    /*MODAL*/
+
+        #modal{
+            background: #ff5e84;
+
+            position: fixed;/*posição fixa faz com que a pagina fique fixa na tela independente 
+            do tamanho ou dimensoes. tambem permite usar os 4 recursos abaixo para escolher
+            aonde fixar as arestas ta tela*/
+            top: 0; /*deixa todo o formulario na parte de cima*/
+            bottom: 0;
+            right: 0;
+            left: 0;
+
+            display: flex;/*poe os filhos em linha*/
+            justify-content: center; /*ajusta os itens ao meio horizontalmente*/
+
+            transition: 500ms;/*delay até aparecer o modal de cadastrar ideia*/
+        }
+
+        #modal.addScroll{
+            overflow: auto;
+        }
+
+        #modal .content{
+            margin-top: 5%;
+
+            color: white;
+        }
+
+        #modal .content h1{
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+        #modal form{
+            width: 80%;
+            max-width: 800px;
+
+            margin: 0 auto 15%;
+
+            display: grid;/*recurso usado para separar em linhas e colunas*/
+            grid-template-columns: 1fr 1fr;/*separando em 2 colunas flexiveis(nao precisa ser um pixel fixo)*/
+            gap: 20px;/*espaçamento entre os itens*/
+        }
+
+        /*para selecionar quais itens ficam em que lugar no grid*/
+        .content form div:nth-child(3),
+        .content form div:nth-child(4),
+        .content form div:nth-child(5) {
+            grid-column: span 2;/*span de expandir o item até o fim da coluna*/
+        }
+
+        form input, form textarea{
+            width: 100%;
+
+            padding: 12px;
+            box-sizing: border-box; /*ao usar o grid, os itens ficam por cima um do outro pois soma-se os 100% 
+            com os 12px, esse recurso faz com que cada item nao estrapole a borda(gap no modal form faz com que 
+            haja um espaço entre eles)*/
+
+            border-radius: 6px;
+            border: 1px solid rgba(141, 25, 52, 0.5);
+
+            outline: none;
+
+            font-size: 16px;
+
+        }
+
+        form label{
+            font-weight: 600;
+            line-height: 32px;
+            letter-spacing: 0.2px;
+        }
+
+        form button{
+            background: white;
+
+            width: 150px;
+            height: 40px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            margin-top: 32px;
+
+            grid-column: 2;/*move o botao para a coluna 2*/
+        
+            justify-self: end;/*ajusta o botao no extremo direito*/
+
+            transition: 500ms;/*delay até aparecer o efeito hover do botao*/
+        }
+
+        form button#back{
+            grid-column: 1;
+            justify-self: start;
+        }
+
+        form button:hover{
+            background-color: #0984e3;
+            color: white;
+
+            text-decoration: none;
+        }
+
+        #modal.hide{
+            opacity: 0;
+            visibility: hidden;
+            /*essas duas configurações substituem o display none, para que ele seja responsivo 
+            ao transition do modal, que faz aparecer com um certo delay*/
+        }
+
+        /*Ideias.html*/
+
+        #page-ideias #container{
+            display: block;
+        }
+
+        #page-ideias header{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #page-ideias nav{
+            display: flex;
+        }
+
+        #page-ideias nav li{
+            list-style-type: none;/*tira as bolinhas de listagem dos itens do menu nav*/
+            margin: 16px;
+        }
+
+        #page-ideias nav li a{
+            color: #25282b;
+        }
+
+        #page-ideias nav a.button{
+            color: white;
+        }
+
+        /*retirar a margem do ultimo item do menu, para que fique alinhado com as ideias*/
+        #page-ideias nav li:last-child{
+            margin: 0;
+        }
+
+        section#title {
+            text-align: center;
+
+            margin: 64px 0;
+        }
+
+        section#title p{
+            opacity: 0.7;
+            margin: 0;
+        }
+
+        section#title h1{
+            margin: 0;
+
+            font-size: 28px;
+
+        }
+
+        section#ideias{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        section#ideias .idea{
+            margin: 0;
+        }
+
+        section#title,
+        section#ideias,
+        footer{
+            margin-top: 64px;
+        }
